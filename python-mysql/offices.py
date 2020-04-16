@@ -24,5 +24,7 @@ sql = f"""
 # print(sql)
 cursor.execute(sql)
 
+print(cursor)
+
 for each in cursor:
     print(each)
