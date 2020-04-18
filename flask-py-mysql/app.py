@@ -59,22 +59,41 @@ def display_employees():
     return render_template('employees_only.html', saved_list=saved_list, cursor_fn = cursor_fn , cursor_ln=cursor_ln, cursor_ct=cursor_ct, cursor_jt=cursor_jt)
 
 
+@app.route('/offices')
+def display_offices() :
 
+    conn = data.get_connection('localhost', os.environ.get('C9_USER'), '', 'classicmodels' )
 
-
-
-# @app.route('/employees_filters')
-# def employees_filters():
-    
-#     conn = data.get_connection('localhost', os.environ.get('C9_USER'), '', 'classicmodels')
+    cursor_offices = dao.get_offices(conn)
     
 
-#     return render_template('employees_filters.html', cursor=cursor, cursor_ln = cursor_ln)
+    return render_template('offices.html', cursor_offices = cursor_offices)
+
+
+@app.route('/create_office')
+def create_office_form():
+
+    return render_template('create_office.html')
+
+@app.route('/create_office', methods=['POST'])
+def create_office() :
+
+    officeCode = request.form.get('officeCode')
+    city = request.form.get('city')
+    phone = request.form.get('phone')
+    addressLine1 = request.form.get('addressLine1')
+    addressLine2 = request.form.get('addressLine2')
+    state = request.form.get('state')
+    country = request.form.get('country')
+    postalCode = request.form.get('postalCode')
+    territory = request.form.get('territory')
     
-    
 
+    conn = data.get_connection('localhost', os.environ.get('C9_USER'), '', 'classicmodels')
 
+    dao.new_offices(conn, officeCode, city, phone, addressLine1, addressLine2, state, country, postalCode, territory) 
 
+    return redirect(url_for('display_offices'))
 
 
 

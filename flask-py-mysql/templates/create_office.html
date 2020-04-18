@@ -1,0 +1,39 @@
+
+{%extends 'layout.template.html'%}
+
+{%block content%}
+<h2> create office </h2>
+<form method='POST'>
+    <label>office Code</label>
+    <input type='text' name='officeCode' />
+    <br>
+    <label>city</label>
+    <input type='text' name='city' />
+    <br>
+    <label>phone</label>
+    <input type='text' name='phone' />
+    <br>
+    <label>address line 1</label>
+    <input type='text' name='addressLine1' />
+    <br>
+    <label>address line 2</label>
+    <input type='text' name='addressLine2' />
+    <br>
+    <label>state</label>
+    <input type='text' name='state'/>
+    <br>
+    <label>country</label>
+    <input type='text' name='country'>
+    <br>
+    <label>postal code</label>
+    <input type='text' name='postalCode'/>
+    <br>
+    <label>territory</label>
+    <input type='text' name='territory'>
+    <br>
+    <input type='submit' value='submit'/>
+
+</form>
+
+
+{%endblock%}

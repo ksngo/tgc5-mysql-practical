@@ -98,3 +98,22 @@ def get_employees_jt(conn):
     cursor_jt.execute(sql)
 
     return cursor_jt
+
+def get_offices(conn):
+
+    sql = "select * from `offices` ORDER BY `officeCode` asc"
+
+    cursor_offices= data.create_cursor(conn)
+    cursor_offices.execute(sql)
+
+    return cursor_offices
+
+def new_offices(conn, officeCode, city, phone, addressLine1, addressLine2, state, country, postalCode, territory):
+
+    sql = f"""insert into `offices` (`officeCode`,`city`,`phone`,`addressLine1`,`addressLine2`,`state`,`country`,`postalCode`,`territory`)
+        values('{officeCode}','{city}','{phone}','{addressLine1}','{addressLine2}','{state}','{country}','{postalCode}','{territory}')
+        """ 
+
+    cursor = data.create_cursor(conn)
+    cursor.execute(sql)
+    conn.commit()
