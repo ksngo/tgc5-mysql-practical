@@ -4,6 +4,48 @@
 
 {%block content %}
 
+    
+    <form method="POST" >
+        <label>Filter by first name</label> 
+        <select name="firstName">
+            <option value="" selected></option>
+            {% for x in cursor_fn %}
+            <option value="{{x.firstName}}"> {{x.firstName}} </option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <label>Filter by last name</label>
+        <select name="lastName">
+            <option value="" selected></option>
+            {% for y in cursor_ln %}
+            <option value="{{y.lastName}}"> {{y.lastName}} </option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <label>Filter by country </label>
+        <select name="country">
+            <option value="" selected></option>
+            {% for z in cursor_ct %}
+            <option value = "{{z.country}}">{{z.country}}</option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <label>Filter by Job Title </label>
+        <select name ="jobTitle">
+            <option value="" selected></option>
+            {% for i in cursor_jt %}
+            <option value="{{i.jobTitle}}">{{i.jobTitle}}</option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <input type="submit" value="filter" />
+    </form>
+
+
     <table>
         <thead>
             <tr>
@@ -17,7 +59,7 @@
                 <th> job title </th>
             </tr>
         </thead>
-            {%for r in cursor%}
+            {%for r in saved_list%}
             <tr>
                 <td> {{r.employeeNumber}} </td>
                 <td> {{r.firstName}} </td>

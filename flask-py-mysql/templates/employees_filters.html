@@ -1,28 +1,7 @@
-{% extends 'layout.template.html' %}
+<!-- {% extends 'layout.template.html' %}
 
-{%block content%}
+{%block content%} -->
 
-<form method="POST" action="{{url_for('display_employees')}}">
-    <label>Filter by first name</label> 
-    
-    <select name="firstName">
-        <option value="" selected></option>
-        {% for x in cursor %}
-        <option value="{{x.firstName}}"> {{x.firstName}} </option>
-        {%endfor%}
-    </select>
-    <br>
-    <label>Filter by last name</label>
+<!-- action="{{url_for('display_employees')}}" -->
 
-    <select name="lastName">
-        <option value="" selected></option>
-        {% for y in cursor_ln %}
-        <option value="{{y.lastName}}"> {{y.lastName}} </option>
-        {%endfor%}
-    </select>
-    <br>
-    <input type="submit" value="filter" />
-</form>
-
-
-{%endblock%}
+<!-- {%endblock%} -->
