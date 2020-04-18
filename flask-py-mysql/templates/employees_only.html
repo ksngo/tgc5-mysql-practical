@@ -1,0 +1,36 @@
+{% extends 'layout.template.html'%}
+
+
+
+{%block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <th> employee number </th>
+                <th> first Name </th>
+                <th> last Name</th>
+                <th> extension </th>
+                <th> email </th>
+                <th> office code </th>
+                <th> reports to </th>
+                <th> job title </th>
+            </tr>
+        </thead>
+            {%for r in cursor%}
+            <tr>
+                <td> {{r.employeeNumber}} </td>
+                <td> {{r.firstName}} </td>
+                <td> {{r.lastName}} </td>
+                <td> {{r.extension}} </td>
+                <td> {{r.email}} </td>
+                <td> {{r.officeCode}} </td>
+                <td> {{r.reportsTo}} </td>
+                <td> {{r.jobTitle}} </td>
+            </tr>
+            {%endfor%}
+    </table>
+
+
+
+{%endblock%}

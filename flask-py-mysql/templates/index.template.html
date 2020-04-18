@@ -1,0 +1,28 @@
+{% extends 'layout.template.html'%}
+
+{%block title%}
+
+{%endblock%}
+
+
+{%block content%}
+    <table>
+        <thead>
+            <tr>
+                <th> Office Code </th>
+                <th> City </th>
+                <th> Address Line1 </th>
+                <th> Address Line2 </th>
+            </tr>
+        </thead>
+            {%for r in cursor%}
+            <tr>
+                <td> <a href="{{url_for('show_employees' , office_code=r.officeCode )}}"> {{r.officeCode}}</a> </td>
+                <td> {{r.city}} </td>
+                <td> {{r.addressLine1}} </td>
+                <td> {{r.addressLine2}} </td>
+            </tr>
+            {%endfor%}
+    </table>
+
+{%endblock%}
