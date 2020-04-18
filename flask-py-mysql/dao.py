@@ -117,3 +117,40 @@ def new_offices(conn, officeCode, city, phone, addressLine1, addressLine2, state
     cursor = data.create_cursor(conn)
     cursor.execute(sql)
     conn.commit()
+
+    
+
+def get_office_code_country(conn):
+
+
+    cursor = data.create_cursor(conn)
+
+    sql = f""" select `country`, `city` from `employees`
+            join `offices` on `employees`.`officeCode` = `offices`.`officeCode` """
+
+    cursor.execute(sql)
+
+    return cursor
+
+def get_reports_to(conn):
+
+    cursor =data.create_cursor(conn)
+
+    sql= "select `reportsTo` from `employees`"
+
+    cursor.execute(sql)
+
+    return cursor
+
+def new_employee(conn,employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle ):
+
+    cursor=data.create_cursor(conn)
+
+    sql=f""" insert into `employees` (`employeeNumber`,`lastName`,`firstName`,`extension`,`email`,`officeCode`,`reportsTo`,`jobTitle`)
+            values('{employeeNumber}','{lastName}','{firstName}','{extension}','{email}','{officeCode}','{reportsTo}','{jobTitle}')
+            """
+    
+    cursor.execute(sql)
+
+    return cursor
+

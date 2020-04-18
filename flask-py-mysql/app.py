@@ -96,6 +96,36 @@ def create_office() :
     return redirect(url_for('display_offices'))
 
 
+@app.route('/create_employee')
+def create_employee_form():
+    conn = data.get_connection('localhost', os.environ.get('C9_USER'),'','classicmodels')
+
+    cursor_cty = dao.get_office_code_country(conn)
+    cursor_rpt_to = dao.get_reports_to(conn)
+
+
+    return render_template('create_employee_form.html', cursor_cty =cursor_cty, cursor_rpt_to=cursor_rpt_to )
+
+@app.route('/create_employee', methods=['POST'])
+def create_employee() :
+
+    employeeNumber = request.form.get('employeeNumber')
+    print('employeeNumber: ',employeeNumber)
+    lastName = request.form.get('lastName')
+    firstName = request.form.get('firstName')
+    extension=request.form.get('extension')
+    email=request.form.get('email')
+    officeCode=request.form.get('officeCode')
+    reportsTo=request.form.get('reportsTo')
+    jobTitle=request.form.get('jobTitle')
+    
+    conn = data.get_connection('localhost', os.environ.get('C9_USER'),'','classicmodels')
+
+    dao.new_employee(conn,employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle )
+
+    conn.commit()
+
+    return redirect(url_for('display_employees'))
 
 
 

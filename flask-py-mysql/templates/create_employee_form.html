@@ -1,0 +1,48 @@
+{%extends 'layout.template.html' %}
+
+{%block content%}
+
+    <form method ='POST'>
+
+        <label>employee number</label>
+        <input type='text' name='employeeNumber'/>
+        <br>
+        <label>last name</label>
+        <input type='text' name='lastName' />
+        <br>
+        <label>firstname</label>
+        <input type='text' name='firstName' />
+        <br>
+        <label>extension</label>
+        <input type='text' name='extension' />
+        <br>
+        <label>email</label>
+        <input type='text' name='email' />
+        <br>
+
+        <label>office Code (country) </label>
+        <select name='officeCode'>
+            {% for i in cursor_cty %}
+            <option> {{ i.country}}&nbsp;{{i.city}} </option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <label>reports to</label>
+        <select name='reportsTo'>
+            {% for i in cursor_rpt_to  %}
+            <option> {{ i.reportsTo   }} </option>
+            {%endfor%}
+        </select>
+        <br>
+
+        <label>job title</label>
+        <input type='text' name='jobTitle'/>
+        <br>
+
+        <input type='submit' value='submit'/>
+
+    </form>
+
+
+{%endblock%}
