@@ -109,6 +109,10 @@ def create_employee_form():
 @app.route('/create_employee', methods=['POST'])
 def create_employee() :
 
+    conn = data.get_connection('localhost', os.environ.get('C9_USER'),'','classicmodels')
+
+    # employeeNumber = dao.get_next_employee_number(conn)
+
     employeeNumber = request.form.get('employeeNumber')
     print('employeeNumber: ',employeeNumber)
     lastName = request.form.get('lastName')

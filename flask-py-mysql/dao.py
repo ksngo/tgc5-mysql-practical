@@ -154,3 +154,18 @@ def new_employee(conn,employeeNumber,lastName,firstName,extension,email,officeCo
 
     return cursor
 
+
+# def get_next_employee_number(conn):
+
+    
+
+#     cursor = data.create_cursor(conn)
+
+#     sql = "select max(employeeNumber) from `employees` "
+
+#     cursor.execute(sql)
+
+#     next_employee_number = cursor.fetchone()['max(employeeNumber)'] +1
+#     print('next_employee_number: ', next_employee_number)
+
+#     return next_employee_number
